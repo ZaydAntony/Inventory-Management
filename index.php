@@ -17,7 +17,7 @@ include("database.php");
         <input type="text" name="username"/><br>
 
         <label>Role:</label>
-        <input type="text" name="role"/><br>
+        <input type="text" name="role" placeholder="admin or cashier"/><br>
 
         <label>Password:</label>
         <input type="password" name="password"/><br>
@@ -28,6 +28,27 @@ include("database.php");
 </html>
 
 <?php
+    if(isset($_POST["Register"])){
+        $username=$_POST["username"];
+        $role=$_POST["role"];
+        $password=$_POST["password"];
 
+        $hash= password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO users(username, password, role)
+                    VALUES('$username','$hash','$role')";
+        
+        try{
+            mysqli_query($connection,$sql);
+            echo "Registration was successful";
+        }catch(exception){
+            echo "Registration failed";
+        }
+
+    }else{
+        echo "Please insert all the fields";
+    }
+
+    mysqli_close($connection);
 
 ?>
