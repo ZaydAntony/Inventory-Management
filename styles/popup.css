@@ -1,0 +1,82 @@
+
+
+.header {
+    display: flex; /* Use Flexbox to align items */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding: 30px 150px; /* Add some padding */
+    border-bottom: 1px solid #ccc; /* Optional: border */
+}
+
+.header h1{
+    font-family:'poppins', sans-serif;
+    font-size:25px;
+    font-weight:600;
+    font-style:italic;
+}
+
+.total-expenses{
+    font-family:"poppins", sans-serif;
+    font-weight:"600";
+}
+
+
+a{
+    text-decoration:underline;
+    cursor:pointer;
+    font-size:18px;
+    
+    
+}
+
+a:hover{
+    padding-top:10px;
+    text-decoration: underline;
+}
+label{
+    font-size:15px;
+    display:flex;
+
+}
+
+.pop-container {
+    display: none; /* Initially hide the popup */
+    position: fixed; /* Fixed positioning to float above other content */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it appears above other content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.popup-content {
+    background-color: #fff; /* White background for the popup */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Maximum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-align: center; /* Center text */
+}
+
+.popup-content h2{
+    margin-top:0;
+    font-size:18px;
+    font-family:"poppins", sans-serif;
+}
+
+
+input:focus{
+    width:105%;
+}
+
+.close-popup{
+    margin-left:200px;
+}
+
+form button{
+    margin-top:30px;
+}
