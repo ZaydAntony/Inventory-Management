@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.container-fluid {
+  padding: 20px; /* Add padding to the container */
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  justify-content: space-between;
+  align-items: stretch; /* Ensure cards are the same height */
+  margin-top: 20px;
+}
+
+.card {
+  flex: 250px;
+  justify-content: space-between; /* Flex-grow, flex-shrink, flex-basis */
+  margin: 10px; /* Space between cards */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+#expense {
+  background-color: #ffcccc; /* Light red */
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2); /* Red shadow */
+  padding: 30px;
+}
+
+#expense:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+#sales {
+  background-color: #ccffcc; /* Light green */
+  box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2);
+  padding: 30px;
+}
+
+#sales:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+#profits {
+  background-color: #ccccff; /* Light blue */
+  box-shadow: 0 4px 10px rgba(0, 0, 255, 0.2); /* Blue shadow */
+  padding: 30px;
+}
+
+#profits:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+#users {
+  background-color: #ffe0cc; /* Light yellow */
+  box-shadow: 0 8px 14px rgba(255, 255, 0, 0.2); /* Yellow shadow */
+  padding: 30px;
+}
+
+#users p {
+  font-size: 36px;
+}
+
+#users:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+h3 {
+  color: #343a40; /* Darker color for headings */
+  margin-bottom: 10px; /* Space below heading */
+}
+
+p {
+  color: #495057; /* Darker color for paragraph text */
+  font-size: 1.2em; /* Increase font size for total */
+  margin: 0; /* Remove default margin */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column; /* Stack cards vertically on small screens */
+  }
+
+  .card {
+    margin: 10px 0; /* Space between stacked cards */
+  }
+}

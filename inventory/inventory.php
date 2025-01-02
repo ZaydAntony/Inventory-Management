@@ -144,8 +144,8 @@
                             <td>Ksh.{$row['Wholesale_price']}</td>
                             <td>Ksh.{$row['Retail_price']}@</td>
                             <td>
-                            <a href='delete.php?id={$row['id']}'  class='btn btn-success' style='margin-right:60px;' >update</a>
-                            <a href='delete.php?id={$row['id']} ' class='btn btn-danger'>Delete</a>
+                            <a href='./editRecord.php?id={$row['id']}'  class='btn btn-success' style='margin-right:60px;' >update</a>
+                            <a href='./deleteRecord.php?id={$row['id']} ' class='btn btn-danger'>Delete</a>
                             
                             </td>
 

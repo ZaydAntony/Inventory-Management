@@ -4,5 +4,4 @@ $connection=mysqli_connect("localhost","root","Antony123$#","inventory"); //serv
         echo "Sorry Failed to connect";
     }
     
-    
 ?>

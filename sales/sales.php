@@ -1,7 +1,11 @@
 <?php
-include("database.php");
-?>
+include("../database/database.php");
 
+session_start();
+
+// Check if the form was submitted
+$formSubmitted = isset($_POST["sale"]) ? true : false;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,7 +186,10 @@ include("database.php");
                     <td>Ksh. {$row['price']}</td>
                     <td>Ksh. {$row['total']}</td>
                     <td>{$row['payment_mode']}</td>
-                    <td><a href='delete.php?id={$row['id']} ' class='btn btn-danger'>Delete</a></td>
+                    <td>
+                    <a href='edit.php?id={$row['id']} ' class='btn btn-success'  style='margin-right:60px;' >update</a>
+                    <a href='./deleteSale.php?id={$row['id']} ' class='btn btn-danger'>Delete</a>
+                    </td>
                     
 
                 </tr>
@@ -191,6 +198,15 @@ include("database.php");
         } else {
             echo "<tr><td colspan='7'>No sales found</td></tr>";
         }
+//calculate sales total
+
+        $totalQuery = "SELECT SUM(total) AS total_sales FROM sales";
+        $totalResult = $connection->query($totalQuery);
+        $totalRow = mysqli_fetch_assoc($totalResult);
+        $totalsales = $totalRow['total_sales'] ? $totalRow['total_sales'] : 0;
+
+        $_SESSION['totalsales'] = $totalsales;
+
 
         // Get data from form and post to the database
         if (isset($_POST["sale"])) {
@@ -220,5 +236,10 @@ include("database.php");
         ?>
     </tbody>
 </table>
+
+<div class="total-sales">
+    <h3>Total Sales: Ksh. <?php echo number_format($totalsales, 2); ?></h3>
+</div>
+
 </body>
 </html>

@@ -1,60 +1,70 @@
-*{
-    margin:0;
-    box-sizing:border-box;
-    padding:0;
-    font-family:"Poppins",sans-serif;
-    list-style:none;
-    text-decoration:none;
-
+.side-bar {
+  position: fixed; /* Fixed position to stay in view */
+  left: 0;
+  width: 250px; /* Fixed width for sidebar */
+  height: 100%; /* Full height */
+  background-color: rgb(31, 10, 68);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  transition: width 0.3s; /* Smooth transition for width */
 }
 
-.side-bar{
-    position:fixed;
-    left:0;
-    width:250px;
-    height:100%;
-    background-color:white;
-    box-shadow:0 2px 5px rgba(0,0,0, 0.1);
+.side-bar header {
+  color: #ffff;
+  padding-top: 15px;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+  line-height: 60px;
+  background-color: rgb(31, 10, 68); /* Light background for header */
+  user-select: none;
 }
 
-.side-bar header{
-    font-size:22px;
-    font-style:italic;
-    font-weight:600;
-    text-align:center;
-    line-height:70px;
-    background-color:white;
-    user-select: none;
-
+.side-bar ul {
+  padding: 0; /* Remove default padding */
 }
 
-.side-bar ul a{
-    display:block;
-    height:100%;
-    width:100%;
-    line-height:65px;
-    font-size:21px;
-    padding-left:40px;
-    box-sizing: border-box;
-    border-top:1px solid rgba(255,255,255,.1);
-    border-bottom: 1px solid black;
-    transition:.4s;
-
-
+.side-bar ul li {
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Add border to list items */
 }
 
-
-ul li:hover a{
-    padding-left:60px;
+.side-bar ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 65px;
+  font-size: 21px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  color: #ffff;
+  transition: padding-left 0.3s; /* Smooth transition for background */
 }
 
-.icon2{
-    width:30px;
-    height:30px;
-    margin-right:20px;
+.side-bar ul li a:hover {
+  padding-left: 50px;
+  text-decoration: underline;
+  color: darksalmon;
 }
-.icon{
-    width:30px;
-    height:30px;
-    margin-right:16px;
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
+
+.icon2 {
+  width: 60px;
+  height: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .side-bar {
+    width: 200px; /* Adjust width for smaller screens */
+  }
+
+  .side-bar ul a {
+    font-size: 18px; /* Smaller font size for mobile */
+  }
 }

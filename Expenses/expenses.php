@@ -1,5 +1,6 @@
 <?php
 include("../database/database.php");
+session_start();
 
 // Check if the form was submitted
 $formSubmitted = isset($_POST["expense"]) ? true : false;
@@ -115,6 +116,8 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
         $totalResult = $connection->query($totalQuery);
         $totalRow = mysqli_fetch_assoc($totalResult);
         $totalExpenses = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
+
+        $_SESSION['totalExpenses'] = $totalExpenses;
 
         if(isset($_POST["expense"]) ){
             $name=$_POST["name"];

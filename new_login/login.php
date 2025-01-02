@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/login.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +32,7 @@
         </div>
     
     </div>
+    
 </body>
 </html>
 
@@ -50,13 +52,18 @@
             $dbusername=$row["username"];
             $dbpassword=$row["password"];
 
-            if(password_verify($password, $dbpassword) && $username==$dbusername){//verification
-                echo "<script>alert('Login was successful')</script>";
+            if(password_verify($password, $dbpassword) && $username==$dbusername){
+                
+                $_SESSION['user_id']=$row['id'];
+                $_SESSION['role']=$row['role'];
                 header("Location: ../dashboard/dashboard.php");
                         exit();
 
             }else{
-                echo "<script>alert('invalid username/password')</script>";
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <p>Invalid username or password!</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
             }
             
         }
@@ -64,7 +71,7 @@
     ;
 
     mysqli_close($connection);
-    
+
 
 
 
