@@ -127,11 +127,13 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
                         $totalResult = $connection->query($totalQuery);
                         $totalRow = mysqli_fetch_assoc($totalResult);
                         $_SESSION['totalExpenses'] = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
-                
+                        
+
                         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>Success!</strong> New expense added.
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="redirectToExpenses()"></button>
                             </div>';
+                        
                     } catch (Exception $e) {
                         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <strong>Failed!</strong> ' . $e->getMessage() . '
@@ -148,7 +150,7 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
                     $_SESSION['totalExpenses'] = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
                 }
                 
-                
+
 
                 mysqli_close($connection);
                 ?>
@@ -162,4 +164,12 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
+<script>
+function redirectToExpenses() {
+    window.location.href = './expenses.php'; // Redirect to expense.php
+}
+</script>
+
+
 </html>

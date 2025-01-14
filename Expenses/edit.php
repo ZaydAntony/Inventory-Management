@@ -1,5 +1,6 @@
 <?php
 include("../database/database.php");
+session_start(); // Start the session to access session variables
 
 // Check if the ID is set in the URL
 if (isset($_GET['id'])) {
@@ -31,9 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updateStmt->bind_param("ssi", $name, $total, $id);
 
     if ($updateStmt->execute()) {
+        // Recalculate total expenses
+        $totalQuery = "SELECT SUM(total) AS total_expenses FROM expenses";
+        $totalResult = $connection->query($totalQuery);
+        $totalRow = mysqli_fetch_assoc($totalResult);
+        $_SESSION['totalExpenses'] = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
+
         // Redirect back to the expenses page after successful update
-        header("Location: expenses.php");
-        exit;
+        header("Location: expenses.php?alert=success");
+        exit();
     } else {
         echo "Error updating expense.";
     }
@@ -53,16 +60,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container">
     <h2>Edit Expense</h2>
     <form action="edit.php?id=<?php echo $id; ?>" method="POST">
-        <div class="mb-3">
+        <div class="row">
+        <div class="mb-3 col">
             <label for="name" class="form-label">Name:</label>
             <input type="text" id="name" name="name" class="form-control" value="<?php echo htmlspecialchars($expense['name']); ?>" required/>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col">
             <label for="total" class="form-label">Total:</label>
             <input type="number" id="total" name="total" class="form-control" value="<?php echo htmlspecialchars($expense['total']); ?>" required/>
         </div>
-        <button type="submit" class="btn btn-success">Update Expense</button>
-        <a href="expenses.php" class="btn btn-danger">Cancel</a>
+        </div>
+            <button type="submit" class="btn btn-success">Update</button>
+            <a href="expenses.php" class="btn btn-danger" style="margin-top:27px;  margin-left:20px;">Cancel</a>
     </form>
 </div>
 

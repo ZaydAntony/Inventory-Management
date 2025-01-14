@@ -16,7 +16,7 @@
             <li><a href="../sales/sales.php"><image src="../assets/sales.png" alt="sales" class="icon"/>Sales</a></li>
             <li><a href="../inventory/inventory.php"><image src="../assets/inventory.png" alt="inventory" class="icon"/>Inventory</a></li>
             <li><a href="../Expenses/expenses.php"><image src="../assets/expenses.png" alt="expenses" class="icon"/>Expenses</a></li>
-            <li><a href=""><image src="../assets/reports.png" alt="reports" class="icon"/>Reports</a></li>
+            <li><a href="../Reports/reports.php"><image src="../assets/reports.png" alt="reports" class="icon"/>Reports</a></li>
             <li><a href="../log_out.php"><image src="../assets/logout.png" alt="logout" class="icon"/>log-out</a></li>
 
         </ul>
