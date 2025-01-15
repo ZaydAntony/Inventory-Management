@@ -58,6 +58,8 @@
             if(password_verify($password, $dbpassword) && $username==$dbusername){
                 
                 $_SESSION['user_id']=$row['id'];
+                $userId= $_SESSION['user_id'];
+                $connection->query("INSERT INTO active_users (user_id) VALUES ($userId) ON DUPLICATE KEY UPDATE last_activity = NOW()");
                 $_SESSION['username']=$row['username'];
                 $_SESSION['role']=$row['role'];
                 header("Location: ../dashboard/dashboard.php");
