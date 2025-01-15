@@ -1,11 +1,12 @@
 <?php
     include("../database/database.php");
+    include_once("./query.php");
 
     session_start();
 
         $totalExpenses = isset($_SESSION['totalExpenses']) ? $_SESSION['totalExpenses'] : 0;
 
-// Retrieve total sales from session
+    // Retrieve total sales from session
         $totalsales = isset($_SESSION['totalsales']) ? $_SESSION['totalsales'] : 0;
 
         // Get user count
@@ -14,20 +15,6 @@
         $userCountRow = mysqli_fetch_assoc($userCountResult);
         $userCount = $userCountRow['user_count'] ? $userCountRow['user_count'] : 0;
 
-        $sql = "SELECT * FROM storeproducts";
-        $result = $connection->query($sql);
-
-        if ($result) {
-            
-            if (mysqli_num_rows($result) > 0) {
-                $purchasePrices = []; // Initialize an array to hold purchase prices
-                $totalPurchasePrice = 0; // Initialize a variable to hold the total purchase price
-        
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $purchasePrice = $row['Purchase_price']; // Get the purchase price
-                    $purchasePrices[] = $purchasePrice; // Store each purchase price in the array
-                    $totalPurchasePrice += $purchasePrice;
-                }}}
 ?>
 
 <!DOCTYPE html>

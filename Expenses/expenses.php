@@ -1,6 +1,6 @@
 <?php
 include("../database/database.php");
-session_start();
+include_once("./queries.php");
 
 // Check if the form was submitted
 $formSubmitted = isset($_POST["expense"]) ? true : false;
@@ -122,13 +122,6 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
                     try {
                         mysqli_query($connection, $sql);
                         
-                        // Update total expenses in session
-                        $totalQuery = "SELECT SUM(total) AS total_expenses FROM expenses";
-                        $totalResult = $connection->query($totalQuery);
-                        $totalRow = mysqli_fetch_assoc($totalResult);
-                        $_SESSION['totalExpenses'] = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
-                        
-
                         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong>Success!</strong> New expense added.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="redirectToExpenses()"></button>
@@ -142,17 +135,7 @@ $formSubmitted = isset($_POST["expense"]) ? true : false;
                     }
                 }
                 
-                // Fetch total expenses for display
-                if (!isset($_SESSION['totalExpenses'])) {
-                    $totalQuery = "SELECT SUM(total) AS total_expenses FROM expenses";
-                    $totalResult = $connection->query($totalQuery);
-                    $totalRow = mysqli_fetch_assoc($totalResult);
-                    $_SESSION['totalExpenses'] = $totalRow['total_expenses'] ? $totalRow['total_expenses'] : 0;
-                }
-                
-
-
-                mysqli_close($connection);
+                mysqli_close($connection)
                 ?>
             </tbody>
             </table>

@@ -2,6 +2,7 @@
 
     include("../database/database.php");
     include("../navigation/nav.php");
+    session_start();
 
 ?>
 
@@ -55,6 +56,7 @@
             if(password_verify($password, $dbpassword) && $username==$dbusername){
                 
                 $_SESSION['user_id']=$row['id'];
+                $_SESSION['username']=$row['username'];
                 $_SESSION['role']=$row['role'];
                 header("Location: ../dashboard/dashboard.php");
                         exit();

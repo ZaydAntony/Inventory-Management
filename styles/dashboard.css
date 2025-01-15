@@ -9,7 +9,7 @@
 }
 
 .cards {
-  display: flex;
+  display: flex 1;
   flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
   justify-content: space-between;
   align-items: stretch; /* Ensure cards are the same height */
@@ -66,7 +66,7 @@
 }
 
 #users:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+  transform: translateY(5px); /* Lift effect on hover */
 }
 
 h3 {

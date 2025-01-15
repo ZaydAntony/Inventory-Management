@@ -1,5 +1,6 @@
 <?php
 include("../database/database.php");
+include_once("../Reports/query.php");
 session_start(); // Start the session
 
 // Retrieve total expenses from session
@@ -7,12 +8,7 @@ $totalExpenses = isset($_SESSION['totalExpenses']) ? $_SESSION['totalExpenses'] 
 
 // Retrieve total sales from session
 $totalsales = isset($_SESSION['totalsales']) ? $_SESSION['totalsales'] : 0;
-
-// Get user count
-$userCountQuery = "SELECT COUNT(*) AS user_count FROM users";
-$userCountResult = $connection->query($userCountQuery);
-$userCountRow = mysqli_fetch_assoc($userCountResult);
-$userCount = $userCountRow['user_count'] ? $userCountRow['user_count'] : 0;
+include_once("./queries.php");
 
 ?>
 
@@ -51,13 +47,14 @@ $userCount = $userCountRow['user_count'] ? $userCountRow['user_count'] : 0;
                 </div>
 
                 <div class="text-center card" id="profits">
-                    <h3>Estimated Profits</h3><br>
-                    <p><strong>Total </strong>Ksh. 0.00</p>
-                </div>
+                            <h3>Inventory Value</h3><br>
+                            <p><strong>Total: </strong><?php echo $totalPurchasePrice ?></p>
+                        </div>
 
                 <div class="text-center card" id="users">
                     <h3>Users</h3>
-                    <p><strong><?php echo $userCount ?> </strong></p><br>
+                    <p><strong><?php echo $userCount?></strong></p>
+                    
                 </div>
             </div>
 
