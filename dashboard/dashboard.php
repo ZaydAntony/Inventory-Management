@@ -10,6 +10,15 @@ $totalExpenses = isset($_SESSION['totalExpenses']) ? $_SESSION['totalExpenses'] 
 $totalsales = isset($_SESSION['totalsales']) ? $_SESSION['totalsales'] : 0;
 include_once("./queries.php");
 
+
+if(isset($_SESSION['user_id'])){
+    $active[]=$_SESSION['user_id'];
+    $activeCount=count($active);
+}
+
+if(isset($_SESSION['username'])){
+    $username= $_SESSION['username'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +43,7 @@ include_once("./queries.php");
         <div class="container-fluid" style="margin-left: 300px;"> <!-- Adjust margin to accommodate sidebar -->
             <div class="header">
                 <h1>Dashboard</h1>
+                <p> Welcome <strong><?php echo $username?></strong></p>
             </div>
             <div class="cards d-flex flex-wrap justify-content-between">
                 <div class="text-center card" id="expense">
@@ -53,11 +63,15 @@ include_once("./queries.php");
 
                 <div class="text-center card" id="users">
                     <h3>Users</h3>
-                    <p><strong><?php echo $userCount?></strong></p>
+                    <p><strong><?php echo $userCount?></strong></p><br>
+                    <h3>Active</h3><br/>
+                    <p><?php echo $activeCount?></p>
                     
                 </div>
             </div>
-
+            <?php
+            if(isset($_SESSION['role']) && $_SESSION['role']==='admin'){
+            echo`
             <table class="table table-striped table-hover text-center mt-4">
                 <thead class="table-dark">
                     <tr>
@@ -94,7 +108,8 @@ include_once("./queries.php");
                     mysqli_close($connection);
                     ?>
                 </tbody>
-            </table>
+            </table>`;}
+            ?>
         </div>
     </div>
 

@@ -29,6 +29,8 @@
             <input type="password" name="password" placeholder="password" class="input-field" required autocomplete="off"/><br>
 
             <input type="submit" name="login" Value="Login" id="login"/><br>
+
+            <p style="margin-top:20px;" class="text-center">Create an account ? <a href="./signup.php">Sign up?</a></p>
             </Form>
         </div>
     
